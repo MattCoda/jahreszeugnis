@@ -459,7 +459,10 @@ function addText(t){const out = document.getElementById("output");
   out.innerText += (out.innerText ? " " : "") + t;
   updateUndoButton();
 }
-function copyText(){ navigator.clipboard.writeText(output.innerText); }
+function copyText(){
+  navigator.clipboard.writeText(output.innerText);
+  incrementCopyCounter(); // läuft unsichtbar im Hintergrund
+}
 function clearText(){ output.innerText=""; }
 
 /* undo platz richtig in cleartext??? */
@@ -890,12 +893,13 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-getFirestore,
-doc,
-getDoc
+  getFirestore,
+  doc,
+  getDoc,
+  updateDoc,
+  increment
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyBmZP-YPWSv7q74FTWuRUpS3ES89p3ST6U",
@@ -907,9 +911,18 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
-
+// 🔹 Unsichtbarer Nutzungs-Counter
+async function incrementCopyCounter() {
+  try {
+    const ref = doc(db, "usage", "copyCounter");
+    await updateDoc(ref, {
+      count: increment(1)
+    });
+  } catch (e) {
+    // bewusst leer – darf niemals stören
+  }
+}
 
 // SHA256 Funktion
 async function sha256(text){
