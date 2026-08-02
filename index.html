@@ -557,7 +557,7 @@ function gen2(){
 /* ---------- BLOCK 3 & 4 ---------- */
 /* ---------- ZENTRALE NOMENLISTE BLOCK 3 & 4 ---------- */
 const workNouns = [
-"Arbeitseinsatz",
+"Einsatz",
 "Ausdauer",
 "Belastbarkeit",
 "Effizienz",
@@ -693,7 +693,7 @@ function gen3(){
     s += adv + " ";
   }
 
-  s += `die Ausführung der ${rel} gestellten Arbeitsaufträge.`;
+  s += `die Ausführung der ${rel} gestellten Aufgaben.`;
 
   addText(s);
 }
@@ -734,7 +734,7 @@ function disableAdj(box){
 }
 
 /* ---------- BLOCK 5 ---------- */
-const groupReasons=["offenen Art","aufgeschlossenen Art","kommunikativen Art","hilfsbereiten Art","freundlichen Art","ruhigen Art","ausgeglichenen Persönlichkeit","konzentrierten Arbeitsweise","zielstrebigen Arbeitsweise","strukturierten Arbeitsweise","verlässlichen Arbeitsweise","kommunikativen Arbeitsweise","konstruktiven Arbeitsweise","ausdauernden Arbeitsweise","pflichtbewussten Arbeitsweise","kreativen Arbeitsweise","Fähigkeit, andere Meinungen zu respektieren,","Fähigkeit, seine Meinung nachvollziehbar zu verteten,","Fähigkeit, Inhalte verständlich zu erklären,",];
+const groupReasons=["offenen Art","aufgeschlossenen Art","kommunikativen Art","hilfsbereiten Art","freundlichen Art","ruhigen Art","ausgeglichenen Persönlichkeit","konzentrierten Herangehensweise","zielstrebigen Herangehensweise","strukturierten Herangehensweise","verlässlichen Herangehensweise","kommunikativen Herangehensweise","konstruktiven Herangehensweise","ausdauernden Herangehensweise","pflichtbewussten Herangehensweise","kreativen Herangehensweise","Fähigkeit, andere Meinungen zu respektieren,","Fähigkeit, seine Meinung nachvollziehbar zu verteten,","Fähigkeit, Inhalte verständlich zu erklären,",];
 function buildGroupReasons(){ groupBox.innerHTML=""; for(let i=0;i<+groupCount.value;i++){ const s=document.createElement("select"); s.innerHTML="<option value=''>Grund wählen</option>"; groupReasons.forEach(r=>s.innerHTML+=`<option>${r}</option>`); s.onchange=()=>disableAdj(groupBox); groupBox.appendChild(s); } }
 function gen5(){
 
